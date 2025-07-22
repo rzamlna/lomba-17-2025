@@ -62,7 +62,6 @@
       max-width: 500px;
       margin: auto;
       width: 100%;
-      box-sizing: border-box;
     }
 
     input, textarea {
@@ -72,7 +71,6 @@
       border-radius: 5px;
       border: 1px solid #ccc;
       font-size: 1em;
-      box-sizing: border-box;
     }
 
     button {
@@ -83,6 +81,7 @@
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
+      font-size: 1em;
     }
 
     .kontak {
@@ -229,14 +228,14 @@
       <form id="pendaftaranForm">
         <input type="text" name="nama" placeholder="Nama Lengkap (Wajib Di isi)" required />
         <input type="number" name="umur" placeholder="Umur (Wajib Di isi)" required />
-        <input type="text" name="nohp" placeholder="Nomor HP (Nomor HP keluarga jika tidak punya)" required />
+        <input type="text" name="nohp" placeholder="Nomor HP (Keluarga jika tidak punya)" required />
         <textarea name="alamat" placeholder="BLOK RUMAH" rows="3" required></textarea>
         <button type="submit">Daftar Sekarang</button>
       </form>
     </section>
 
     <div class="kontak">
-      <p>📞 Hubungi Panitia: <a href="wa.me/081514567600">+123-456-7890</a></p>
+      <p>📞 Hubungi Panitia: <a href="https://wa.me/6281514567600">+62 815-1456-7600</a></p>
     </div>
   </div>
 
@@ -285,7 +284,7 @@
         form.reset();
       })
       .catch(err => {
-        alert("Pendaftaran Gagal, Silahkan Hubungi Panitia.");
+        alert("Pendaftaran gagal, silakan hubungi panitia.");
         console.error(err);
       });
     });
