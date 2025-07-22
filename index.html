@@ -201,20 +201,14 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      const data = {
-        nama: form.nama.value,
-        umur: form.umur.value,
-        nohp: form.nohp.value,
-        alamat: form.alamat.value
-      };
+
+      const formData = new FormData(form);
+
       fetch('https://script.google.com/macros/s/AKfycbyjLkOwL6x0e0sl-tA6k3x-5v0ZgmbqgCKJgfHn7kqfxsNCrY_1aQdRyMjf9_g6BDP2Qg/exec', {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        body: formData
       })
-      .then(res => res.json())
+      .then(res => res.text())
       .then(res => {
         alert("Pendaftaran berhasil! Terima kasih telah mendaftar.");
         form.reset();
