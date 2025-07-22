@@ -2,78 +2,111 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gebyar Kemerdekaan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Rubik', sans-serif;
       margin: 0;
-      background: #a00000;
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(to bottom, #d00000, #a00000);
       color: white;
     }
 
-    a {
-      color: white;
-      text-decoration: none;
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    a:hover {
-      text-decoration: underline;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 1s ease-out forwards;
     }
+
+    .fade-delay-1 { animation-delay: 0.3s; }
+    .fade-delay-2 { animation-delay: 0.6s; }
+    .fade-delay-3 { animation-delay: 0.9s; }
+    .fade-delay-4 { animation-delay: 1.2s; }
 
     header {
-      background: #d00000;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
 
     header img.bendera {
-      width: 100px;
-      display: block;
-      margin: 0 auto 15px;
+      width: 80px;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     header h1 {
-      font-size: 2.2em;
-      margin: 0;
+      font-size: 2.5em;
+      margin: 10px 0 5px;
     }
 
-    header h2 {
-      margin-top: 10px;
-      font-size: 1.2em;
-      font-weight: normal;
+    header h2, header p {
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.9;
     }
 
     .karakter {
       display: block;
       margin: 20px auto;
-      max-width: 400px;
       width: 90%;
+      max-width: 450px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .lomba {
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 40px 20px;
+      background-color: #fff;
+      color: #333;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      margin-top: 40px;
+    }
+
+    .lomba h3 {
+      text-align: center;
+      color: #d00000;
+      font-size: 1.8em;
+      margin-bottom: 25px;
     }
 
     .lomba ul {
-      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
       padding: 0;
-      width: 100%;
-      max-width: 300px;
+      list-style: none;
+      max-width: 600px;
+      margin: auto;
     }
 
     .lomba li {
-      margin-bottom: 10px;
+      background: #f5f5f5;
+      padding: 10px 15px;
+      border-radius: 10px;
       text-align: center;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .form-section {
       background: white;
-      color: black;
+      color: #333;
       padding: 40px 20px;
       border-top-left-radius: 40px;
       border-top-right-radius: 40px;
@@ -81,61 +114,85 @@
 
     .form-section h3 {
       text-align: center;
-      margin-bottom: 20px;
       color: #d00000;
+      font-size: 1.8em;
+      margin-bottom: 25px;
     }
 
     form {
       max-width: 500px;
       margin: auto;
-      width: 100%;
-      box-sizing: border-box;
     }
 
-    input, select, textarea {
+    input, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 15px;
-      border-radius: 5px;
       border: 1px solid #ccc;
+      border-radius: 10px;
       font-size: 1em;
-      box-sizing: border-box;
+      transition: border 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #d00000;
+      outline: none;
     }
 
     button {
       background: #d00000;
       color: white;
+      padding: 14px 20px;
       border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
+      border-radius: 10px;
+      font-size: 1em;
+      font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s ease;
       width: 100%;
+    }
+
+    button:hover {
+      background: #a00000;
     }
 
     .kontak {
       text-align: center;
-      padding: 20px;
-      color: white;
-      background-color: #a00000;
+      padding: 25px 20px;
+      font-size: 0.95em;
+      background-color: #700000;
     }
 
     .kontak a {
+      color: white;
       font-weight: bold;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .lomba ul {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
+  <header class="fade-in fade-delay-1">
     <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" class="bendera" alt="Bendera Merah Putih">
     <h1>GEBYAR KEMERDEKAAN</h1>
     <h2>Duren Baru Permai Wilayah 4</h2>
     <p>Republik Indonesia</p>
   </header>
 
-  <img src="https://i.imgur.com/GXkXK8E.png" alt="Anak-anak lomba 17an" class="karakter">
+  <img src="https://i.imgur.com/GXkXK8E.png" alt="Anak-anak lomba 17an" class="karakter fade-in fade-delay-2">
 
-  <section class="lomba">
+  <section class="lomba fade-in fade-delay-3">
+    <h3>Daftar Lomba</h3>
     <ul>
       <li>Lari Bendera</li>
       <li>Balap Karung</li>
@@ -152,37 +209,15 @@
       <li>Bulu Tangkis</li>
       <li>Bola Voli</li>
       <li>Memasak</li>
-      <li>Dll.</li>
     </ul>
   </section>
 
-  <section class="form-section">
+  <section class="form-section fade-in fade-delay-4">
     <h3>Form Pendaftaran</h3>
     <form id="pendaftaranForm">
       <input type="text" name="nama" placeholder="Nama Lengkap" required>
       <input type="number" name="umur" placeholder="Umur" required>
       <input type="text" name="nohp" placeholder="Nomor HP" required>
-      
-      <label for="lomba">Pilih Lomba:</label>
-      <select name="lomba" required>
-        <option value="">-- Pilih Lomba --</option>
-        <option value="Lari Bendera">Lari Bendera</option>
-        <option value="Balap Karung">Balap Karung</option>
-        <option value="Balap Kelereng">Balap Kelereng</option>
-        <option value="Makan Kerupuk">Makan Kerupuk</option>
-        <option value="Tarik Tambang">Tarik Tambang</option>
-        <option value="Sepeda Hias">Sepeda Hias</option>
-        <option value="Panjat Pinang">Panjat Pinang</option>
-        <option value="Cerdas Cermat">Cerdas Cermat</option>
-        <option value="Karaoke">Karaoke</option>
-        <option value="Tari Daerah">Tari Daerah</option>
-        <option value="Catur">Catur</option>
-        <option value="Sepak Bola">Sepak Bola</option>
-        <option value="Bulu Tangkis">Bulu Tangkis</option>
-        <option value="Bola Voli">Bola Voli</option>
-        <option value="Memasak">Memasak</option>
-      </select>
-
       <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
       <button type="submit">Daftar Sekarang</button>
     </form>
@@ -191,6 +226,12 @@
   <div class="kontak">
     <p>📞 Hubungi Panitia: <a href="tel:+1234567890">+123-456-7890</a></p>
   </div>
+
+  <!-- Musik Otomatis (loop) -->
+  <audio id="bgMusic" loop>
+    <source src="https://drive.google.com/uc?export=download&id=1WJKvHe7js3G4apA35O-BJyfYbnbrfTkb" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
 
   <script>
     const form = document.getElementById('pendaftaranForm');
@@ -201,7 +242,6 @@
         nama: form.nama.value,
         umur: form.umur.value,
         nohp: form.nohp.value,
-        lomba: form.lomba.value,
         alamat: form.alamat.value
       };
 
@@ -221,6 +261,21 @@
         alert("Terjadi kesalahan. Coba lagi nanti.");
         console.error(err);
       });
+    });
+
+    // Otomatis play musik setelah user menyentuh layar (untuk mobile)
+    const music = document.getElementById('bgMusic');
+    const startMusic = () => {
+      music.play().catch(() => {});
+      document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
+    };
+    document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
+
+    // Coba autoplay di desktop
+    window.addEventListener('DOMContentLoaded', () => {
+      music.play().catch(() => {});
     });
   </script>
 
