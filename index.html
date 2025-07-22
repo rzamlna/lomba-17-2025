@@ -242,7 +242,7 @@
     const welcomeScreen = document.getElementById('welcomeScreen');
     const mainContent = document.getElementById('mainContent');
     const music = document.getElementById('bgMusic');
-    const form = document.getElementById('pendaftaranForm');
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
 
     function startApp() {
       welcomeScreen.style.opacity = 0;
