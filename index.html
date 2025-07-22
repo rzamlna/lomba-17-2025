@@ -160,12 +160,12 @@
     <img src="IMG_5364.jpeg" alt="Anak-anak lomba 17an" class="karakter" />
 
     <section class="form-section">
-      <h3>Form Pendaftaran</h3>
+      <h3>Form Pendaftaran Lomba</h3>
       <form id="pendaftaranForm">
-        <input type="text" name="nama" placeholder="Nama Lengkap" required />
-        <input type="number" name="umur" placeholder="Umur" required />
-        <input type="text" name="nohp" placeholder="Nomor HP" required />
-        <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
+        <input type="text" name="nama" placeholder="Nama Lengkap (Wajib di isi)" required />
+        <input type="number" name="umur" placeholder="Umur (Wajib di isi)" required />
+        <input type="text" name="nohp" placeholder="Nomor HP (Nomor hp keluarga jika tidak ada)" required />
+        <textarea name="alamat" placeholder="BLOK RUMAH" rows="3" required></textarea>
         <button type="submit">Daftar Sekarang</button>
       </form>
     </section>
@@ -214,7 +214,7 @@
         form.reset();
       })
       .catch(err => {
-        alert("Terjadi kesalahan. Coba lagi nanti.");
+        alert("Pendaftaran Gagal.");
         console.error(err);
       });
     });
