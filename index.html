@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Gebyar Kemerdekaan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Rubik', sans-serif;
+      margin: 0;
+      background: #a00000;
+      color: white;
+    }
+    header {
+      background: #d00000;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+    header h2 {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: normal;
+    }
+    .lomba {
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .lomba ul {
+      list-style: none;
+      padding: 0;
+    }
+    .lomba li {
+      margin-bottom: 10px;
+    }
+    .form-section {
+      background: white;
+      color: black;
+      padding: 40px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    .form-section h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #d00000;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #d00000;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .kontak {
+      text-align: center;
+      padding: 20px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>GEBYAR KEMERDEKAAN</h1>
+    <h2>Duren Baru Permai Wilayah 4</h2>
+    <p>Republik Indonesia</p>
+  </header>
+
+  <section class="lomba">
+    <ul>
+      <li>Lari Bendera</li>
+      <li>Balap Karung</li>
+      <li>Balap Kelereng</li>
+      <li>Makan Kerupuk</li>
+      <li>Tarik Tambang</li>
+      <li>Sepeda Hias</li>
+      <li>Panjat Pinang</li>
+      <li>Cerdas Cermat</li>
+    </ul>
+    <ul>
+      <li>Karaoke</li>
+      <li>Tari Daerah</li>
+      <li>Catur</li>
+      <li>Sepak Bola</li>
+      <li>Bulu Tangkis</li>
+      <li>Bola Voli</li>
+      <li>Memasak</li>
+      <li>Dll.</li>
+    </ul>
+  </section>
+
+  <section class="form-section">
+    <h3>Form Pendaftaran</h3>
+    <form id="pendaftaranForm">
+      <input type="text" name="nama" placeholder="Nama Lengkap" required>
+      <input type="number" name="umur" placeholder="Umur" required>
+      <input type="text" name="nohp" placeholder="Nomor HP" required>
+      
+      <label for="lomba">Pilih Lomba:</label>
+      <select name="lomba" required>
+        <option value="">-- Pilih Lomba --</option>
+        <option value="Lari Bendera">Lari Bendera</option>
+        <option value="Balap Karung">Balap Karung</option>
+        <option value="Balap Kelereng">Balap Kelereng</option>
+        <option value="Makan Kerupuk">Makan Kerupuk</option>
+        <option value="Catur">Catur</option>
+        <option value="Karaoke">Karaoke</option>
+        <option value="Sepak Bola">Sepak Bola</option>
+        <option value="Panjat Pinang">Panjat Pinang</option>
+      </select>
+
+      <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
+      <button type="submit">Daftar Sekarang</button>
+    </form>
+  </section>
+
+  <div class="kontak">
+    <p>📞 Hubungi Panitia: +123-456-7890</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('pendaftaranForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const data = {
+        nama: form.nama.value,
+        umur: form.umur.value,
+        nohp: form.nohp.value,
+        lomba: form.lomba.value,
+        alamat: form.alamat.value
+      };
+
+      fetch('YOUR_GOOGLE_SCRIPT_URL', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        alert("Pendaftaran berhasil! Terima kasih telah mendaftar.");
+        form.reset();
+      })
+      .catch(err => {
+        alert("Terjadi kesalahan. Coba lagi nanti.");
+        console.error(err);
+      });
+    });
+  </script>
+
+</body>
+</html>
