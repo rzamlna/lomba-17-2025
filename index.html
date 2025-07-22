@@ -41,6 +41,7 @@
       margin: 20px auto;
       max-width: 400px;
       width: 90%;
+      border-radius: 10px;
     }
 
     .form-section {
@@ -53,7 +54,7 @@
 
     .form-section h3 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: #d00000;
     }
 
@@ -135,6 +136,32 @@
       to { opacity: 1; }
     }
 
+    .lomba-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      text-align: left;
+      margin: 20px 0 30px;
+    }
+    .lomba-kolom {
+      flex: 1 1 300px;
+      background: #ffeaea;
+      color: #d00000;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 300px;
+    }
+    .lomba-kolom h4 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .lomba-kolom ul {
+      list-style: decimal;
+      padding-left: 20px;
+    }
+
     audio {
       display: none;
     }
@@ -145,7 +172,7 @@
   <!-- Welcome Screen -->
   <div class="welcome" id="welcomeScreen">
     <h1>🇮🇩 Selamat Datang!</h1>
-    <p>Pendaftaran Lomba</p>
+    <p>Pendaftaran Lomba 17 Agustus</p>
   </div>
 
   <!-- Konten Utama -->
@@ -159,13 +186,51 @@
 
     <img src="IMG_5364.jpeg" alt="Anak-anak lomba 17an" class="karakter" />
 
+    <!-- Jenis Lomba -->
+    <div class="lomba-list">
+      <div class="lomba-kolom">
+        <h4>👶 Anak Usia 3–5 Tahun</h4>
+        <ul>
+          <li>Memindahkan bendera</li>
+          <li>Memindahkan bola warna-warni</li>
+          <li>Estafet kardus</li>
+          <li>Meniup balon dalam botol berisi air</li>
+          <li>Makan krupuk</li>
+          <li>Isi botol kosong dengan air</li>
+        </ul>
+      </div>
+      <div class="lomba-kolom">
+        <h4>🧒 Anak Usia 6–11 Tahun</h4>
+        <ul>
+          <li>Memasukkan paku ke dalam botol</li>
+          <li>Makan kerupuk</li>
+          <li>Balap karung pakai helm</li>
+          <li>Estafet sarung</li>
+          <li>Makan biskuit</li>
+          <li>Memindahkan sedotan pakai hidung</li>
+        </ul>
+      </div>
+      <div class="lomba-kolom">
+        <h4>👦 Remaja Usia 12–16 Tahun</h4>
+        <ul>
+          <li>Balap karung</li>
+          <li>Ambil koin</li>
+          <li>Makan kerupuk</li>
+          <li>Estafet sarung</li>
+          <li>Estafet tepung</li>
+          <li>Memasukkan paku ke dalam botol</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Form Pendaftaran -->
     <section class="form-section">
-      <h3>Form Pendaftaran Lomba</h3>
+      <h3>Form Pendaftaran</h3>
       <form id="pendaftaranForm">
-        <input type="text" name="nama" placeholder="Nama Lengkap (Wajib di isi)" required />
-        <input type="number" name="umur" placeholder="Umur (Wajib di isi)" required />
-        <input type="text" name="nohp" placeholder="Nomor HP (Nomor hp keluarga jika tidak ada)" required />
-        <textarea name="alamat" placeholder="BLOK RUMAH" rows="3" required></textarea>
+        <input type="text" name="nama" placeholder="Nama Lengkap" required />
+        <input type="number" name="umur" placeholder="Umur" required />
+        <input type="text" name="nohp" placeholder="Nomor HP" required />
+        <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
         <button type="submit">Daftar Sekarang</button>
       </form>
     </section>
@@ -201,20 +266,26 @@
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-
-      const formData = new FormData(form);
-
+      const data = {
+        nama: form.nama.value,
+        umur: form.umur.value,
+        nohp: form.nohp.value,
+        alamat: form.alamat.value
+      };
       fetch('https://script.google.com/macros/s/AKfycbyjLkOwL6x0e0sl-tA6k3x-5v0ZgmbqgCKJgfHn7kqfxsNCrY_1aQdRyMjf9_g6BDP2Qg/exec', {
         method: 'POST',
-        body: formData
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-      .then(res => res.text())
+      .then(res => res.json())
       .then(res => {
         alert("Pendaftaran berhasil! Terima kasih telah mendaftar.");
         form.reset();
       })
       .catch(err => {
-        alert("Pendaftaran Gagal.");
+        alert("Terjadi kesalahan. Coba lagi nanti.");
         console.error(err);
       });
     });
