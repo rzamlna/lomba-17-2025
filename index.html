@@ -1,50 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gebyar Kemerdekaan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Rubik', sans-serif;
       background: #a00000;
       color: white;
       overflow-x: hidden;
     }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: white; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     header {
       background: #d00000;
       text-align: center;
       padding: 40px 20px;
     }
-
     header img.bendera {
       width: 100px;
       display: block;
       margin: 0 auto 15px;
     }
-
     header h1 {
       font-size: 2.2em;
       margin: 0;
     }
-
     header h2 {
       margin-top: 10px;
       font-size: 1.2em;
@@ -56,25 +41,6 @@
       margin: 20px auto;
       max-width: 400px;
       width: 90%;
-    }
-
-    .lomba {
-      padding: 30px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .lomba ul {
-      list-style: none;
-      padding: 0;
-      width: 100%;
-      max-width: 300px;
-    }
-
-    .lomba li {
-      margin-bottom: 10px;
-      text-align: center;
     }
 
     .form-section {
@@ -129,7 +95,6 @@
       font-weight: bold;
     }
 
-    /* Welcome screen */
     .welcome {
       position: fixed;
       top: 0; left: 0;
@@ -161,12 +126,10 @@
       from { transform: translateY(40px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-
     @keyframes fadeInText {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -188,41 +151,20 @@
   <!-- Konten Utama -->
   <div id="mainContent" style="display:none;">
     <header>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" class="bendera" alt="Bendera Merah Putih">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" class="bendera" alt="Bendera Merah Putih" />
       <h1>GEBYAR KEMERDEKAAN</h1>
       <h2>Duren Baru Permai Wilayah 4</h2>
       <p>Republik Indonesia</p>
     </header>
 
-    <img src="IMG_5364.jpeg" alt="Anak-anak lomba 17an" class="karakter">
-
-    <section class="lomba">
-      <ul>
-        <li>Lari Bendera</li>
-        <li>Balap Karung</li>
-        <li>Balap Kelereng</li>
-        <li>Makan Kerupuk</li>
-        <li>Tarik Tambang</li>
-        <li>Sepeda Hias</li>
-        <li>Panjat Pinang</li>
-        <li>Cerdas Cermat</li>
-        <li>Karaoke</li>
-        <li>Tari Daerah</li>
-        <li>Catur</li>
-        <li>Sepak Bola</li>
-        <li>Bulu Tangkis</li>
-        <li>Bola Voli</li>
-        <li>Memasak</li>
-        <li>Dll.</li>
-      </ul>
-    </section>
+    <img src="IMG_5364.jpeg" alt="Anak-anak lomba 17an" class="karakter" />
 
     <section class="form-section">
       <h3>Form Pendaftaran</h3>
       <form id="pendaftaranForm">
-        <input type="text" name="nama" placeholder="Nama Lengkap" required>
-        <input type="number" name="umur" placeholder="Umur" required>
-        <input type="text" name="nohp" placeholder="Nomor HP" required>
+        <input type="text" name="nama" placeholder="Nama Lengkap" required />
+        <input type="number" name="umur" placeholder="Umur" required />
+        <input type="text" name="nohp" placeholder="Nomor HP" required />
         <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
         <button type="submit">Daftar Sekarang</button>
       </form>
@@ -235,14 +177,14 @@
 
   <!-- Musik -->
   <audio id="bgMusic" loop preload="auto">
-    <source src="https://archive.org/download/LaguNasionalRepublikIndonesia/Lagu%20Nasional%20RI%20%23%20Hari%20Merdeka.Mp3" type="audio/mpeg">
+    <source src="https://archive.org/download/LaguNasionalRepublikIndonesia/Lagu%20Nasional%20RI%20%23%20Hari%20Merdeka.Mp3" type="audio/mpeg" />
   </audio>
 
   <script>
     const welcomeScreen = document.getElementById('welcomeScreen');
     const mainContent = document.getElementById('mainContent');
     const music = document.getElementById('bgMusic');
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+    const form = document.getElementById('pendaftaranForm');
 
     function startApp() {
       welcomeScreen.style.opacity = 0;
@@ -283,6 +225,5 @@
       });
     });
   </script>
-
 </body>
 </html>
