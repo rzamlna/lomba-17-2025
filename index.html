@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Coming Soon</title>
+  <title>Coming Soon - 17 Agustusan</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -14,37 +14,38 @@
 
     body {
       font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #ff0000, #ffcccc);
+      color: white;
       height: 100vh;
-      background: linear-gradient(135deg, #d50000, #ffebee);
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 3.5em;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-      animation: pulse 2.5s infinite, fadeInUp 2s ease-out forwards;
-      opacity: 0;
-      white-space: nowrap; /* ✅ Supaya tidak turun ke bawah */
-      padding: 0 10px;
       text-align: center;
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+    .coming-soon h1 {
+      font-size: 3rem;
+      animation: pulse 2s infinite;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
-    @keyframes fadeInUp {
+    .coming-soon p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      animation: slideUp 1.5s ease-out;
+      color: #fff;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideUp {
       from {
-        transform: translateY(40px);
+        transform: translateY(20px);
         opacity: 0;
       }
       to {
@@ -53,14 +54,16 @@
       }
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2em;
-      }
+    .emoji {
+      font-size: 1.5em;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
-  <h1>🇮🇩 Coming Soon 🇮🇩</h1>
+  <div class="coming-soon">
+    <h1><span class="emoji">🇮🇩</span> Coming Soon <span class="emoji">🇮🇩</span></h1>
+    <p>Sesuatu yang besar akan hadir...<br>Bersiaplah untuk kejutan Agustusan! 🎉</p>
+  </div>
 </body>
 </html>
