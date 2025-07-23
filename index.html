@@ -22,48 +22,57 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      flex-direction: column;
     }
 
-    .coming-soon h1 {
+    .coming-soon h1,
+    .coming-soon p {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    h1 {
       font-size: 3rem;
-      animation: pulse 2s infinite;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
-    .coming-soon p {
+    p {
       margin-top: 20px;
-      font-size: 1.2rem;
-      animation: slideUp 1.5s ease-out;
+      font-size: 1.3rem;
       color: #fff;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
     .emoji {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin: 0 5px;
     }
   </style>
 </head>
 <body>
   <div class="coming-soon">
-    <h1><span class="emoji">🇮🇩</span> Coming Soon <span class="emoji">🇮🇩</span></h1>
-    <p>Sesuatu yang besar akan hadir...<br>Bersiaplah untuk kejutan Agustusan! 🎉</p>
+    <h1 id="title">🇮🇩 Coming Soon 🇮🇩</h1>
+    <p id="teks1">Sesuatu yang besar akan hadir...</p>
+    <p id="teks2">Bersiaplah untuk kejutan Agustusan! 🎉</p>
   </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("title").classList.add("show");
+    }, 0);
+
+    setTimeout(() => {
+      document.getElementById("teks1").classList.add("show");
+    }, 2000);
+
+    setTimeout(() => {
+      document.getElementById("teks2").classList.add("show");
+    }, 4000);
+  </script>
 </body>
 </html>
