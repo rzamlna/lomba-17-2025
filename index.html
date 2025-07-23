@@ -58,33 +58,6 @@
       color: #d00000;
     }
 
-    form {
-      max-width: 500px;
-      margin: auto;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-
-    button {
-      background: #d00000;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-    }
-
     .kontak {
       text-align: center;
       padding: 20px;
@@ -165,6 +138,12 @@
     audio {
       display: none;
     }
+
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -223,16 +202,10 @@
       </div>
     </div>
 
-    <!-- Form Pendaftaran -->
+    <!-- Form Google -->
     <section class="form-section">
       <h3>Form Pendaftaran</h3>
-      <form id="pendaftaranForm">
-        <input type="text" name="nama" placeholder="Nama Lengkap" required />
-        <input type="number" name="umur" placeholder="Umur" required />
-        <input type="text" name="nohp" placeholder="Nomor HP" required />
-        <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
-        <button type="submit">Daftar Sekarang</button>
-      </form>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc7DlgRny3Hb9cpaEz_dlFhV2meGByEtxlwbZ29unK7ov7mMg/viewform?embedded=true" height="800">Memuat…</iframe>
     </section>
 
     <div class="kontak">
@@ -249,7 +222,6 @@
     const welcomeScreen = document.getElementById('welcomeScreen');
     const mainContent = document.getElementById('mainContent');
     const music = document.getElementById('bgMusic');
-    const form = document.getElementById('pendaftaranForm');
 
     function startApp() {
       welcomeScreen.style.opacity = 0;
@@ -263,32 +235,6 @@
 
     document.addEventListener('click', startApp, { once: true });
     document.addEventListener('touchstart', startApp, { once: true });
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const data = {
-        nama: form.nama.value,
-        umur: form.umur.value,
-        nohp: form.nohp.value,
-        alamat: form.alamat.value
-      };
-      fetch('https://script.google.com/macros/s/AKfycbyjLkOwL6x0e0sl-tA6k3x-5v0ZgmbqgCKJgfHn7kqfxsNCrY_1aQdRyMjf9_g6BDP2Qg/exec', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => res.json())
-      .then(res => {
-        alert("Pendaftaran berhasil! Terima kasih telah mendaftar.");
-        form.reset();
-      })
-      .catch(err => {
-        alert("Terjadi kesalahan. Coba lagi nanti.");
-        console.error(err);
-      });
-    });
   </script>
 </body>
 </html>
