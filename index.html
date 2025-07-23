@@ -62,6 +62,7 @@
       max-width: 500px;
       margin: auto;
       width: 100%;
+      box-sizing: border-box;
     }
 
     input, textarea {
@@ -71,6 +72,7 @@
       border-radius: 5px;
       border: 1px solid #ccc;
       font-size: 1em;
+      box-sizing: border-box;
     }
 
     button {
@@ -81,7 +83,6 @@
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
-      font-size: 1em;
     }
 
     .kontak {
@@ -188,7 +189,7 @@
     <!-- Jenis Lomba -->
     <div class="lomba-list">
       <div class="lomba-kolom">
-        <h4>Anak Usia 3–5 Tahun</h4>
+        <h4>👶 Anak Usia 3–5 Tahun</h4>
         <ul>
           <li>Memindahkan bendera</li>
           <li>Memindahkan bola warna-warni</li>
@@ -199,7 +200,7 @@
         </ul>
       </div>
       <div class="lomba-kolom">
-        <h4>Anak Usia 6–11 Tahun</h4>
+        <h4>🧒 Anak Usia 6–11 Tahun</h4>
         <ul>
           <li>Memasukkan paku ke dalam botol</li>
           <li>Makan kerupuk</li>
@@ -210,7 +211,7 @@
         </ul>
       </div>
       <div class="lomba-kolom">
-        <h4>Remaja Usia 12–16 Tahun</h4>
+        <h4>👦 Remaja Usia 12–16 Tahun</h4>
         <ul>
           <li>Balap karung</li>
           <li>Ambil koin</li>
@@ -224,18 +225,18 @@
 
     <!-- Form Pendaftaran -->
     <section class="form-section">
-      <h3>Form Pendaftaran Lomba</h3>
+      <h3>Form Pendaftaran</h3>
       <form id="pendaftaranForm">
-        <input type="text" name="nama" placeholder="Nama Lengkap (Wajib Di isi)" required />
-        <input type="number" name="umur" placeholder="Umur (Wajib Di isi)" required />
-        <input type="text" name="nohp" placeholder="Nomor HP (Keluarga jika tidak punya)" required />
-        <textarea name="alamat" placeholder="BLOK RUMAH" rows="3" required></textarea>
+        <input type="text" name="nama" placeholder="Nama Lengkap" required />
+        <input type="number" name="umur" placeholder="Umur" required />
+        <input type="text" name="nohp" placeholder="Nomor HP" required />
+        <textarea name="alamat" placeholder="Alamat Lengkap" rows="3" required></textarea>
         <button type="submit">Daftar Sekarang</button>
       </form>
     </section>
 
     <div class="kontak">
-      <p>📞 Hubungi Panitia: <a href="https://wa.me/6281514567600">+62 815-1456-7600</a></p>
+      <p>📞 Hubungi Panitia: <a href="tel:+1234567890">+123-456-7890</a></p>
     </div>
   </div>
 
@@ -271,7 +272,7 @@
         nohp: form.nohp.value,
         alamat: form.alamat.value
       };
-      fetch('https://script.google.com/macros/s/AKfycbxutqm_a7mXYgdxI-tg-PdLkrzA7FksfCkjA9gdkjkEj6RT0HGGxNuMXxxZevEd65zW0w/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbyjLkOwL6x0e0sl-tA6k3x-5v0ZgmbqgCKJgfHn7kqfxsNCrY_1aQdRyMjf9_g6BDP2Qg/exec', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -284,7 +285,7 @@
         form.reset();
       })
       .catch(err => {
-        alert("Pendaftaran gagal, silakan hubungi panitia.");
+        alert("Terjadi kesalahan. Coba lagi nanti.");
         console.error(err);
       });
     });
