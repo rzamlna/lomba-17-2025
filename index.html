@@ -45,17 +45,50 @@
       font-size: 1.3rem;
       margin: 10px 0;
     }
+
+    #countdown {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: #fff700;
+    }
   </style>
 </head>
 <body>
-  <h1 class="fade-in" id="line1">🇮🇩Coming Soon🇮🇩</h1>
-  <p class="fade-in" id="line2">Sesuatu yang besar akan hadir...🤫</p>
+  <h1 class="fade-in" id="line1">🇮🇩 Coming Soon 🇮🇩</h1>
+  <p class="fade-in" id="line2">Sesuatu yang besar akan hadir...</p>
   <p class="fade-in" id="line3">Bersiaplah untuk kejutan Agustusan! 🎉</p>
+  <div class="fade-in" id="countdown"></div>
 
   <script>
+    // Animasi muncul satu per satu
     setTimeout(() => document.getElementById('line1').classList.add('show'), 500);
     setTimeout(() => document.getElementById('line2').classList.add('show'), 2500);
     setTimeout(() => document.getElementById('line3').classList.add('show'), 4500);
+    setTimeout(() => document.getElementById('countdown').classList.add('show'), 6500);
+
+    // Hitung mundur ke 1 Agustus 2025
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date("2025-08-01T00:00:00+07:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "🎉 Waktunya telah tiba!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `⏳ ${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
