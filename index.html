@@ -25,54 +25,37 @@
       flex-direction: column;
     }
 
-    .coming-soon h1,
-    .coming-soon p {
+    .fade-in {
       opacity: 0;
       transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
     }
 
-    .show {
+    .fade-in.show {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 1s ease, transform 1s ease;
     }
 
     h1 {
       font-size: 3rem;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
     }
 
     p {
-      margin-top: 20px;
       font-size: 1.3rem;
-      color: #fff;
-    }
-
-    .emoji {
-      font-size: 1.2em;
-      margin: 0 5px;
+      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <div class="coming-soon">
-    <h1 id="title">🇮🇩 Coming Soon 🇮🇩</h1>
-    <p id="teks1">Sesuatu yang besar akan hadir...</p>
-    <p id="teks2">Bersiaplah untuk kejutan Agustusan! 🎉</p>
-  </div>
+  <h1 class="fade-in" id="line1">🇮🇩 Coming Soon 🇮🇩</h1>
+  <p class="fade-in" id="line2">Sesuatu yang besar akan hadir...</p>
+  <p class="fade-in" id="line3">Bersiaplah untuk kejutan Agustusan! 🎉</p>
 
   <script>
-    setTimeout(() => {
-      document.getElementById("title").classList.add("show");
-    }, 0);
-
-    setTimeout(() => {
-      document.getElementById("teks1").classList.add("show");
-    }, 2000);
-
-    setTimeout(() => {
-      document.getElementById("teks2").classList.add("show");
-    }, 4000);
+    setTimeout(() => document.getElementById('line1').classList.add('show'), 500);
+    setTimeout(() => document.getElementById('line2').classList.add('show'), 2500);
+    setTimeout(() => document.getElementById('line3').classList.add('show'), 4500);
   </script>
 </body>
 </html>
