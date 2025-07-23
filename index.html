@@ -244,66 +244,50 @@
     <source src="https://archive.org/download/LaguNasionalRepublikIndonesia/Lagu%20Nasional%20RI%20%23%20Hari%20Merdeka.Mp3" type="audio/mpeg" />
   </audio>
 
-<script>
-  const welcomeScreen = document.getElementById('welcomeScreen');
-  const mainContent = document.getElementById('mainContent');
-  const music = document.getElementById('bgMusic');
-  const form = document.getElementById('pendaftaranForm');
+  <script>
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const mainContent = document.getElementById('mainContent');
+    const music = document.getElementById('bgMusic');
+    const form = document.getElementById('pendaftaranForm');
 
-  // Fungsi untuk menghilangkan welcome screen dan memutar musik
-  function startApp() {
-    welcomeScreen.style.opacity = 0;
-    welcomeScreen.style.transform = 'scale(1.1)';
-    setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      mainContent.style.display = 'block';
-    }, 1000);
-    music.play().catch(err => console.warn('Audio gagal diputar:', err));
-  }
+    function startApp() {
+      welcomeScreen.style.opacity = 0;
+      welcomeScreen.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+      }, 1000);
+      music.play().catch(err => console.warn('Audio gagal diputar:', err));
+    }
 
-  document.addEventListener('click', startApp, { once: true });
-  document.addEventListener('touchstart', startApp, { once: true });
+    document.addEventListener('click', startApp, { once: true });
+    document.addEventListener('touchstart', startApp, { once: true });
 
-  // Submit form
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const data = {
-      nama: form.nama.value.trim(),
-      umur: form.umur.value.trim(),
-      nohp: form.nohp.value.trim(),
-      alamat: form.alamat.value.trim()
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbxutqm_a7mXYgdxI-tg-PdLkrzA7FksfCkjA9gdkjkEj6RT0HGGxNuMXxxZevEd65zW0w/exec', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
-    })
-    .then(res => res.json())
-    .then(res => {
-      if (res.result === "success") {
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Pendaftaran berhasil dikirim.',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = {
+        nama: form.nama.value,
+        umur: form.umur.value,
+        nohp: form.nohp.value,
+        alamat: form.alamat.value
+      };
+      fetch('https://script.google.com/macros/s/AKfycbxutqm_a7mXYgdxI-tg-PdLkrzA7FksfCkjA9gdkjkEj6RT0HGGxNuMXxxZevEd65zW0w/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(res => {
+        alert("Pendaftaran berhasil! Terima kasih telah mendaftar.");
         form.reset();
-      } else {
-        throw new Error("Respon gagal");
-      }
-    })
-    .catch(err => {
-      Swal.fire({
-        title: 'Gagal!',
-        text: 'Terjadi kesalahan. Silakan hubungi panitia.',
-        icon: 'error',
-        confirmButtonText: 'OK'
+      })
+      .catch(err => {
+        alert("Pendaftaran gagal, silakan hubungi panitia.");
+        console.error(err);
       });
-      console.error(err);
     });
-  });
-</script>
+  </script>
 </body>
 </html>
