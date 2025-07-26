@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon - 17 Agustusan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background: linear-gradient(135deg, #ff0000, #ffcccc);
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 10px 0;
+    }
+
+    #countdown {
+      font-size: 1.5rem;
+      margin-top: 30px;
+      color: #fff700;
+    }
+  </style>
+</head>
+<body>
+  <img src="IMG_5364.jpeg" 
+       alt="Bendera Indonesia" 
+       style="width: 300px; max-width: 90%; margin-bottom: 20px;" 
+       class="karakter" id="flagGif" />
+  
+  <h1 class="fade-in" id="line1">🇮🇩 Coming Soon 🇮🇩</h1>
+  <p class="fade-in" id="line2">Sesuatu yang besar akan hadir...</p>
+  <p class="fade-in" id="line3">Bersiaplah untuk kejutan Agustusan! 🎉</p>
+  <div class="fade-in" id="countdown"></div>
+
+  <script>
+    // Animasi muncul satu per satu
+    setTimeout(() => document.getElementById('flagGif').classList.add('show'), 100);
+    setTimeout(() => document.getElementById('line1').classList.add('show'), 500);
+    setTimeout(() => document.getElementById('line2').classList.add('show'), 2500);
+    setTimeout(() => document.getElementById('line3').classList.add('show'), 4500);
+    setTimeout(() => document.getElementById('countdown').classList.add('show'), 6500);
+
+    // Hitung mundur ke 1 Agustus 2025
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date("2025-08-01T00:00:00+07:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "🎉 Waktunya telah tiba!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `⏳ ${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
